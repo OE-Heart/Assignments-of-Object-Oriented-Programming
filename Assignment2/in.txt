@@ -1,0 +1,12 @@
+10 6
+Chinese Math English Physics Chemistry Biology
+K.Weng   3  Math      147  English   139  Chinese   114
+T.Dixon  4  Physics   129  Chemistry 98   Chinese   134  English   139
+V.Chu    6  English   147  Chemistry 93   Biology   79   Math      125  Physics   142  Chinese   123
+L.Tson   2  Chinese   123  Math      137
+L.Lee    5  English   129  Physics   142  Chinese   128  Chemistry 98   Chinese   123
+I.Young  1  English   139
+K.Hiro   5  Biology   79   English   104  Physics   138  Chinese   123  Chemistry 96
+G.Ping   6  Chinese   123  Math      149  English   150  Physics   142  Chemistry 98   Biology   79
+H.Gu     3  Math      144  English   139  Physics   142
+J.Jon    4  English   139  Physics   138  Chemistry 98   Biology   80

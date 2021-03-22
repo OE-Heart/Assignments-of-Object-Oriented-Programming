@@ -1,11 +1,9 @@
+#include <iostream>
 #include <fstream>
 #include <iomanip>
 using namespace std;
 
-#define Upperbound 100
-
-string courseList[];
-string stuList[];
+#define Upperbound 150
 
 class Course{
 public:
@@ -32,12 +30,22 @@ public:
     }
 
 private:
-    string name;
-    int stuNum;
+    int courseNum;
+    string* courseName;
+    int *stuScore;
 };
 
 class Stu{
 public:
+    Stu(int n, string* s)
+    {
+        stuNum = n;
+        stuName = new string[n];
+        for (int i = 0; i < n; i++)
+        {
+            
+        }
+    }
     string getName()
     {
         return name;
@@ -49,11 +57,29 @@ public:
     }
 
 private:
-    string name;
+    int stuNum;
+    string* stuName;
+    int stuID;
     int courseNum;
 };
 
 int main()
 {
+    int stuNum, courseNum;
+    ifstream infile;   //输入流
+    infile.open("in.txt", ios::in); 
+    infile >> stuNum >> courseNum;
 
+    Course* courseList = new Course[courseNum];
+    Stu* stuList = new Stu[stuNum];
+
+    string courseName;
+    for (int i = 0; i < courseNum; i++)
+    {
+        infile >> courseName;
+        
+    }
+
+
+    return 0;
 }
