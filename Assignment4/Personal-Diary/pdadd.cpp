@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:23:59
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 19:00:54
+ * @LastEditTime: 2021-05-06 19:33:06
  * @Description: 
  * @FilePath: /Personal-Diary/pdadd.cpp
  */
@@ -34,9 +34,10 @@ int main(int argc, char *argv[])
     {
         if (diary[i].getDate() == date_buf)
         {
-            tag = !tag;
+            tag = true;
             break;
         }
+        else if (diary[i].getDate() > date_buf) break;
     }
 
     if (tag)
@@ -47,6 +48,11 @@ int main(int argc, char *argv[])
     else
     {
         diary.push_back(entity_buf);
+        for(vector<Entity>::size_type j = diary.size()-1; j > i; j--)
+        {
+            diary[j] = diary[j-1];
+        }
+        diary[i] = entity_buf;
         cout << "Diary at date " << date_buf << " is added." << endl;
     }
 
