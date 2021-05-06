@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:26:17
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 11:12:05
+ * @LastEditTime: 2021-05-06 14:01:29
  * @Description: 
  * @FilePath: /Personal-Diary/Entity.cpp
  */
@@ -34,4 +34,49 @@ string Entity::getContent(vector<string>::size_type i)
 vector<string>::size_type Entity::getContentSize()
 {
     return content.size();
+}
+
+void loadEntity(vector<Entity>* diary)
+{
+    ifstream infile;
+    infile.open(DataFile, ios::in);
+    if (infile)
+    {
+        Entity entity_buf;
+        vector<string> content_buf;
+        string date_buf;
+        string s;
+        while (!infile.eof())
+        {
+            getline(infile, date_buf);
+            entity_buf.setDate(date_buf);
+            content_buf.clear();
+            getline(infile, s);
+            while (s != ".")
+            {
+                content_buf.push_back(s);
+                getline(infile, s);
+            }
+            entity_buf.setContent(content_buf);
+            (*diary).push_back(entity_buf);
+        }
+        infile.close();
+    }
+}
+
+void updateEntity(vector<Entity>* diary)
+{
+    ofstream outfile;
+    outfile.open(DataFile, ios::out);
+    for (vector<Entity>::size_type i = 0; i < (*diary).size(); i++)
+    {
+        outfile << (*diary)[i].getDate() << endl;
+        // outfile << "time is above" << endl;
+        for (vector<string>::size_type j = 0; j < (*diary)[i].getContentSize(); j++)
+        {
+            outfile << (*diary)[i].getContent(j) << endl;
+        }
+        outfile << "." << endl;
+    }
+    outfile.close();
 }
