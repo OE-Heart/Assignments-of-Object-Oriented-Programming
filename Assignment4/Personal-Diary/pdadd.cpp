@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:23:59
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 13:54:07
+ * @LastEditTime: 2021-05-06 19:00:54
  * @Description: 
  * @FilePath: /Personal-Diary/pdadd.cpp
  */
@@ -42,10 +42,12 @@ int main(int argc, char *argv[])
     if (tag)
     {
         diary[i] = entity_buf;
+        cout << "Diary at date " << date_buf << " is replaced." << endl;
     }
     else
     {
         diary.push_back(entity_buf);
+        cout << "Diary at date " << date_buf << " is added." << endl;
     }
 
     updateEntity(&diary);

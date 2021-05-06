@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:26:17
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 14:01:29
+ * @LastEditTime: 2021-05-06 18:58:13
  * @Description: 
  * @FilePath: /Personal-Diary/Entity.cpp
  */
@@ -68,15 +68,17 @@ void updateEntity(vector<Entity>* diary)
 {
     ofstream outfile;
     outfile.open(DataFile, ios::out);
+    bool first = true;
     for (vector<Entity>::size_type i = 0; i < (*diary).size(); i++)
     {
+        if (first) first = false;
+        else outfile << endl;
         outfile << (*diary)[i].getDate() << endl;
-        // outfile << "time is above" << endl;
         for (vector<string>::size_type j = 0; j < (*diary)[i].getContentSize(); j++)
         {
             outfile << (*diary)[i].getContent(j) << endl;
         }
-        outfile << "." << endl;
+        outfile << ".";
     }
     outfile.close();
 }
