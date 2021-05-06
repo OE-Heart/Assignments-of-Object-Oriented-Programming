@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:24:35
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 14:18:05
+ * @LastEditTime: 2021-05-06 14:24:15
  * @Description: 
  * @FilePath: /Personal-Diary/pdremove.cpp
  */
@@ -38,10 +38,10 @@ int main(int argc, char *argv[])
     else
     {
         cout << "Diary at date " << date_buf  << " doesn't exist.\n";
-        return 0;
+        return -1;
     }
 
     updateEntity(&diary);
     cout << "Diary at date " << date_buf  << " is removed successfully.\n";
-    return 1;
+    return 0;
 }
