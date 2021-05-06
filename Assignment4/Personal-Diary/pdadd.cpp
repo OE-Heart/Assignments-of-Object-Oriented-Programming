@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:23:59
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-05 21:30:26
+ * @LastEditTime: 2021-05-06 11:28:34
  * @Description: 
  * @FilePath: /Personal-Diary/pdadd.cpp
  */
@@ -18,22 +18,29 @@ int main(int argc, char *argv[])
     vector<string> content_buf;
     string date_buf;
     string s;
-    while (!infile.eof())
+    if (!infile)
     {
-        getline(infile, date_buf);
-        entity_buf.setDate(date_buf);
-        content_buf.clear();
-        getline(infile, s);
-        while (s != ".")
+        infile.open(DataFile, ios::out);
+    }
+    else
+    {
+        while (!infile.eof())
         {
-            content_buf.push_back(s);
+            getline(infile, date_buf);
+            entity_buf.setDate(date_buf);
+            content_buf.clear();
             getline(infile, s);
+            while (s != ".")
+            {
+                content_buf.push_back(s);
+                getline(infile, s);
+            }
+            entity_buf.setContent(content_buf);
+            diary.push_back(entity_buf);
         }
-        entity_buf.setContent(content_buf);
-        diary.push_back(entity_buf);
     }
     infile.close();
-
+    
     date_buf = argv[1];
     entity_buf.setDate(date_buf);
     content_buf.clear();
@@ -43,6 +50,7 @@ int main(int argc, char *argv[])
         content_buf.push_back(s);
         getline(cin, s);
     }
+    entity_buf.setContent(content_buf);
 
     bool tag = false;
     vector<Entity>::size_type i;
@@ -64,11 +72,13 @@ int main(int argc, char *argv[])
         diary.push_back(entity_buf);
     }
 
-    ofstream outfile(DataFile);
+    ofstream outfile;
+    outfile.open(DataFile, ios::out);
     for (i = 0; i < diary.size(); i++)
     {
         outfile << diary[i].getDate() << endl;
-        for (vector<string>::size_type j; i < diary[i].getContentSize(); i++)
+        outfile << "time is above" << endl;
+        for (vector<string>::size_type j = 0; j < diary[i].getContentSize(); j++)
         {
             outfile << diary[i].getContent(j) << endl;
         }

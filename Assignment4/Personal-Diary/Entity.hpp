@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:08:00
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-05 21:35:24
+ * @LastEditTime: 2021-05-06 11:18:27
  * @Description: 
  * @FilePath: /Personal-Diary/Entity.hpp
  */
@@ -13,7 +13,7 @@
 #include <vector>
 using namespace std;
 
-#define DataFile "Diary.txt"
+#define DataFile ".Diary"
 
 class Entity
 {
@@ -26,4 +26,5 @@ public:
     void setContent(vector<string> content_buf);
     string getContent(vector<string>::size_type i);
     vector<string>::size_type getContentSize();
+    //void loadEntity(ifstream infile, )
 };
