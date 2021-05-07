@@ -2,8 +2,8 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:08:00
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 15:09:40
- * @Description: 
+ * @LastEditTime: 2021-05-07 09:21:14
+ * @Description: Declaration of classes and functions
  * @FilePath: /Personal-Diary/Entity.hpp
  */
 

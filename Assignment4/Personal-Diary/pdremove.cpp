@@ -2,8 +2,8 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:24:35
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 19:00:05
- * @Description: 
+ * @LastEditTime: 2021-05-07 09:18:08
+ * @Description: Main program of pdremove
  * @FilePath: /Personal-Diary/pdremove.cpp
  */
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     vector<Entity>::size_type i;
     for (i = 0; i < diary.size(); i++)
     {
-        if (diary[i].getDate() == date_buf)
+        if (diary[i].getDate() == date_buf) /*Find the place to remove*/
         {
             tag = !tag;
             break;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         }
         diary.pop_back();
     }
-    else
+    else /*Diary doesn't exist*/
     {
         cout << "Diary at date " << date_buf << " doesn't exist.\n";
         return -1;

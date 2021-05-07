@@ -2,8 +2,8 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:24:23
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 19:07:42
- * @Description: 
+ * @LastEditTime: 2021-05-07 09:18:42
+ * @Description: Main program of pdshow
  * @FilePath: /Personal-Diary/pdshow.cpp
  */
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     vector<Entity>::size_type i;
     for (i = 0; i < diary.size(); i++)
     {
-        if (diary[i].getDate() == date_buf)
+        if (diary[i].getDate() == date_buf) /*Find the place to show*/
         {
             tag = !tag;
             break;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
             cout << diary[i].getContent(j) << endl;
         }
     }
-    else
+    else /*Diary doesn't exist*/
     {
         cout << "Diary at date " << date_buf << " doesn't exist.\n";
         return -1;

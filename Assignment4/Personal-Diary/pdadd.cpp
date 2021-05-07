@@ -2,8 +2,8 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:23:59
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 19:33:06
- * @Description: 
+ * @LastEditTime: 2021-05-07 09:17:07
+ * @Description: Main program of pdadd
  * @FilePath: /Personal-Diary/pdadd.cpp
  */
 
@@ -32,20 +32,20 @@ int main(int argc, char *argv[])
     vector<Entity>::size_type i;
     for (i = 0; i < diary.size(); i++)
     {
-        if (diary[i].getDate() == date_buf)
+        if (diary[i].getDate() == date_buf) /*Check if the date is repetitive*/
         {
             tag = true;
             break;
         }
-        else if (diary[i].getDate() > date_buf) break;
+        else if (diary[i].getDate() > date_buf) break; /*Find the place to insert*/
     }
 
-    if (tag)
+    if (tag) /*Replace the existing diary*/
     {
         diary[i] = entity_buf;
         cout << "Diary at date " << date_buf << " is replaced." << endl;
     }
-    else
+    else /*Add diary in the order of date*/
     {
         diary.push_back(entity_buf);
         for(vector<Entity>::size_type j = diary.size()-1; j > i; j--)

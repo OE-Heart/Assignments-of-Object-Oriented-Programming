@@ -2,8 +2,8 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-04 20:26:17
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-06 18:58:13
- * @Description: 
+ * @LastEditTime: 2021-05-07 09:21:44
+ * @Description: Implementation of classes and functions
  * @FilePath: /Personal-Diary/Entity.cpp
  */
 

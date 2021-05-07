@@ -3,8 +3,8 @@
  # @Author: Ou Yixin
  # @Date: 2021-05-06 21:31:06
  # @LastEditors: Ou Yixin
- # @LastEditTime: 2021-05-06 22:00:16
- # @Description: 
+ # @LastEditTime: 2021-05-07 09:10:50
+ # @Description: A shell script for your software (cover all programs)
  # @FilePath: /Personal-Diary/pd.sh
 ### 
 make
