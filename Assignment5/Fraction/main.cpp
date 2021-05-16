@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-16 17:21:20
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-16 19:14:45
+ * @LastEditTime: 2021-05-16 20:57:57
  * @Description: 
  * @FilePath: /Fraction/main.cpp
  */
@@ -11,28 +11,35 @@
 
 int main()
 {
-    Fraction fa(6, 24);
-    Fraction fb(-4, 24);
-    fa.print();
-    fb.print();
+    printf("Please input two integers a and b and fa will be a/b: ");
+    Fraction fa;
+    std::cin >> fa;
+    std::cout << "fa = " << fa << std::endl;
+    std::string s = fa;
+    std::cout << "fa(string) = " << s << std::endl;
+    double x = fa;
+    std::cout << "fa(double) = " << x << std::endl;
+    std::string q;
+    printf("Please input a finite decimal string as fb: ");
+    std::cin >> q;
+    Fraction fb(q);
+    std::cout << "fb = " << fb << std::endl;
+    std::cout << "fb = " << q << std::endl;
+    printf("The calculation results are as follows:\n");    
     Fraction fc = fa+fb;
-    fc.print();
+    std::cout << "fa+fb = " << fc << std::endl;
     fc = fa-fb;
-    fc.print();
+    std::cout << "fa-fb = " << fc << std::endl;
     fc = fa*fb;
-    fc.print();
+    std::cout << "fa*fb = " << fc << std::endl;
     fc = fa/fb;
-    fc.print();
-
-    if (fa == fb) printf("==\n");
-    if (fa != fb) printf("!=\n");
-    if (fa > fb) printf(">\n");
-    if (fa >= fb) printf(">=\n");
-    if (fa < fb) printf("<\n");
-    if (fa <= fb) printf("<=\n");
-
-    double x = fb;
-    printf("%lf\n", x);
+    std::cout << "fa/fb = " << fc << std::endl;
+    if (fa == fb) printf("fa == fb\n");
+    if (fa != fb) printf("fa != fb\n");
+    if (fa > fb) printf("fa > fb\n");
+    if (fa >= fb) printf("fa >= fb\n");
+    if (fa < fb) printf("fa < fb\n");
+    if (fa <= fb) printf("fa <= fb\n");
     
     return 0;
 }

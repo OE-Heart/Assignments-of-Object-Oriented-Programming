@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-16 15:51:47
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-16 19:13:47
+ * @LastEditTime: 2021-05-16 20:40:59
  * @Description: 
  * @FilePath: /Fraction/Fraction.cpp
  */
@@ -29,13 +29,13 @@ Fraction::Fraction()
     Denominator = 0;
 }
 
-Fraction::Fraction(int a, int b)
+Fraction::Fraction(const int& a, const int& b)
 {
     if (a == 0 || b == 0)
     {
         Molecular = 0;
         Denominator = 0;
-        if (b == 0) printf("Denominator cannot be equal to 0!");
+        if (b == 0) printf("Denominator cannot be equal to 0!\n");
         return;
     }
     int t = gcd(a, b);
@@ -47,6 +47,30 @@ Fraction::Fraction(const Fraction& f)
 {
     Molecular = f.Molecular;
     Denominator = f.Denominator;
+}
+
+Fraction::Fraction(const std::string& dec)
+{
+    int n = dec.length();
+    int tag = dec.find(".");
+
+    int a = 0, b;
+    b = pow(10, n-2);
+    for (int i = 0; i < n; i++)
+    {
+        if (i == tag) continue;
+        a = a*10+dec[i]-'0';
+    }
+    if (a == 0 || b == 0)
+    {
+        Molecular = 0;
+        Denominator = 0;
+        if (b == 0) printf("Denominator cannot be equal to 0!\n");
+        return;
+    }
+    int t = gcd(a, b);
+    Molecular = a/t;
+    Denominator = b/t;
 }
 
 Fraction Fraction::operator+(const Fraction& that)
@@ -179,15 +203,48 @@ bool Fraction::operator<=(const Fraction& that)
 
 Fraction::operator double()
 {
-    return 1.0*Molecular/Denominator;
+    if (this->Molecular == 0 || this->Denominator == 0) return 0;
+    return 1.0*this->Molecular/this->Denominator;
 }
 
-void Fraction::print()
+Fraction::operator std::string()
 {
-    if (Molecular == 0)
+    std::string result;
+    if (this->Molecular == 0 || this->Denominator == 0)
     {
-        printf("0\n");
-        return;
+        result = "0";
+        return result;
     }
-    printf("%d/%d\n", Molecular, Denominator);
+    std::string m = std::to_string(this->Molecular);
+    std::string d = std::to_string(this->Denominator);
+    result = m+"/"+d;
+    return result;
+}
+
+std::istream& operator>>(std::istream& input, Fraction& F)
+{
+    int a, b;
+    input >> a >> b;
+    if (a == 0 || b == 0)
+    {
+        F.Molecular = 0;
+        F.Denominator = 0;
+        if (b == 0) printf("Denominator cannot be equal to 0!\n");
+        return input;
+    }
+    int t = gcd(a, b);
+    F.Molecular = a/t;
+    F.Denominator = b/t;
+    return input;
+}
+
+std::ostream& operator<<(std::ostream& output, const Fraction& F)
+{
+    if (F.Molecular == 0)
+    {
+        output << "0";
+        return output;
+    }
+    output << F.Molecular << "/" << F.Denominator;
+    return output;
 }
