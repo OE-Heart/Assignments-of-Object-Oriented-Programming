@@ -2,7 +2,7 @@
  * @Author: Ou Yixin
  * @Date: 2021-05-16 15:51:47
  * @LastEditors: Ou Yixin
- * @LastEditTime: 2021-05-16 17:21:44
+ * @LastEditTime: 2021-05-16 19:13:47
  * @Description: 
  * @FilePath: /Fraction/Fraction.cpp
  */
@@ -31,8 +31,16 @@ Fraction::Fraction()
 
 Fraction::Fraction(int a, int b)
 {
-    Molecular = a;
-    Denominator = b;
+    if (a == 0 || b == 0)
+    {
+        Molecular = 0;
+        Denominator = 0;
+        if (b == 0) printf("Denominator cannot be equal to 0!");
+        return;
+    }
+    int t = gcd(a, b);
+    Molecular = a/t;
+    Denominator = b/t;
 }
 
 Fraction::Fraction(const Fraction& f)
@@ -129,6 +137,49 @@ Fraction Fraction::operator/(const Fraction& that)
     result.Molecular = m/t;
     result.Denominator = d/t;
     return result;
+}
+
+bool Fraction::operator==(const Fraction& that)
+{
+    if (this->Molecular == that.Molecular)
+    {
+        if (this->Molecular == 0) return true;
+        else if (this->Denominator == that.Denominator) return true;
+        else return false;
+    }
+    else return false;
+}
+
+bool Fraction::operator!=(const Fraction& that)
+{
+    return !(*this == that);
+}
+
+bool Fraction::operator>(const Fraction& that)
+{
+    Fraction a = (*this)-that;
+    if (a.Molecular > 0) return true;
+    else return false;
+}
+
+bool Fraction::operator>=(const Fraction& that)
+{
+    return (*this == that || *this > that);
+}
+
+bool Fraction::operator<(const Fraction& that)
+{
+    return !(*this >= that);
+}
+
+bool Fraction::operator<=(const Fraction& that)
+{
+    return !(*this >that);
+}
+
+Fraction::operator double()
+{
+    return 1.0*Molecular/Denominator;
 }
 
 void Fraction::print()
